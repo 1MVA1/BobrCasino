@@ -1,0 +1,13 @@
+{
+  "name": "BobrGame",
+  "uuid": "146f95c1-535e-4cc0-ae3f-02d9bc84f063",
+  "creator": {
+    "version": "3.8.5",
+    "registry": {
+      "remote": {}
+    },
+    "dependencies": {
+      "localization-editor": "1.0.2"
+    }
+  }
+}

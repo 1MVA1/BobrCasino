@@ -1,0 +1,1 @@
+Repository of The Bobr Game for the subject Game Design at ITMO University
