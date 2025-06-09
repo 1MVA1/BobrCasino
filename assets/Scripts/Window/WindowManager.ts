@@ -5,7 +5,9 @@ import { PotteryWindow } from './PotteryWindow';
 import { PumpingStationWindow } from './PumpingStationWindow';
 import { TransportWindow } from './TransportWindow';
 import { WarehouseWindow } from './WarehouseWindow';
+import { CasinoWindow } from './CasinoWindow';
 import { BaseWindow } from './BaseWindow';
+import { ResourceList } from '../Resources/ResourceList';
 const { ccclass, property } = _decorator;
 
 @ccclass('WindowManager')
@@ -42,6 +44,15 @@ export class WindowManager extends Component {
     public TransportPrefab:Prefab = null!;
 
     @property({
+    type: Prefab,
+    tooltip: "Prefab for casino window"
+    })
+    public CasinoPrefab: Prefab = null!;
+
+    @property(ResourceList)
+    resourceList: ResourceList = null!;
+
+    @property({
         type:Prefab,
         tooltip:"Prefab for warehouse window"
     })
@@ -58,6 +69,8 @@ export class WindowManager extends Component {
         }
 
         let windowComp:unknown
+
+        log("typeOfWindow received:", typeOfWindow);
 
         switch(typeOfWindow)
         {
@@ -86,6 +99,20 @@ export class WindowManager extends Component {
                     this.node.addChild(this.NewWindow);
                 }
                 windowComp = this.NewWindow.getComponent(PotteryWindow);
+                break;
+
+            case "Casino":
+                if (this.NewWindow == null) 
+                {
+                    this.NewWindow = instantiate(this.CasinoPrefab);
+                    this.node.addChild(this.NewWindow);
+
+                    const casinoComp = this.NewWindow.getComponent(CasinoWindow);
+                    if (casinoComp) {
+                        casinoComp.resourceList = this.resourceList;  
+                    }
+                }
+                windowComp = this.NewWindow.getComponent(CasinoWindow);
                 break;
 
             case "PumpingStation":

@@ -18,5 +18,3 @@ export class ResourceTemplate extends Component {
         this.resAmount.string = data.resAmount.toString();
     }
 }
-
-

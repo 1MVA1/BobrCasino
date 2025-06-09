@@ -13,5 +13,3 @@ export class Resource {
     @property(SpriteFrame)
     iconSF: SpriteFrame | null = null;
 }
-
-

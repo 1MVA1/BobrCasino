@@ -32,7 +32,8 @@ export class ResourceList extends Component {
         this.resources.push(res);
     }
 
-    public AddAmtToResource(resName:string, amountToAdd:number){
+    public AddAmtToResource(resName:string, amountToAdd:number)
+    {
         var foundRes = this.FindResourceByName(resName);
 
         if(foundRes == undefined){
@@ -83,5 +84,3 @@ export class ResourceList extends Component {
         }
     }
 }
-
-
